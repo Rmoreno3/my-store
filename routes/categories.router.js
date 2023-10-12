@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/categories', (req, res) => {
+router.get('/', (req, res) => {
   const { categoryId } = req.params;
 
   res.json([
@@ -18,7 +18,7 @@ router.get('/categories', (req, res) => {
   ]);
 });
 
-router.get('/categories/:categoryId', (req, res) => {
+router.get('/:categoryId', (req, res) => {
   const { categoryId } = req.params;
 
   res.json({
