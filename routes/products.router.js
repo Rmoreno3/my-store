@@ -28,7 +28,7 @@ router.get('/filter', (req, res) => {
 // Crear un producto
 router.post('/', (req, res) => {
   const body = req.body;
-  res.json({
+  res.status(201).json({
     message: 'product created',
     data: body,
   });
