@@ -25,22 +25,32 @@ router.get('/filter', (req, res) => {
   res.send('soy un filter');
 });
 
-// Traer un producto por su id
-router.get('/:id', (req, res) => {
-  const { id } = req.params;
-  res.json({
-    id,
-    name: 'product 1',
-    price: 1000,
-  });
-});
-
 // Crear un producto
 router.post('/', (req, res) => {
   const body = req.body;
   res.json({
     message: 'product created',
     data: body,
+  });
+});
+
+// Actualizar un producto
+router.patch('/:id', (req, res) => {
+  const { id } = req.params;
+  const body = req.body;
+  res.json({
+    message: 'product updated partial',
+    data: body,
+    id,
+  });
+});
+
+// Eliminar un producto
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  res.json({
+    message: 'product deleted',
+    id,
   });
 });
 

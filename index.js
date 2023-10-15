@@ -7,10 +7,12 @@ const port = 3000;
 // Middleware
 app.use(express.json());
 
+// Ruta principal
 app.get('/', (req, res) => {
   res.send('Hello World');
 });
 
+// Rutas
 routerApi(app);
 
 app.listen(port, () => {
