@@ -1,4 +1,5 @@
 const { faker } = require('@faker-js/faker');
+const boom = require('@hapi/boom');
 
 class UsersService {
   constructor() {
@@ -11,6 +12,8 @@ class UsersService {
       this.users.push({
         id: faker.string.uuid(),
         name: faker.person.firstName(),
+        lastName: faker.person.lastName(),
+        email: faker.internet.email(),
         gender: faker.person.gender(),
       });
     }
@@ -37,7 +40,7 @@ class UsersService {
     const index = this.users.findIndex((item) => item.id === id);
 
     if (index === -1) {
-      throw new Error('Product not found');
+      throw boom.notFound('User Not Found');
     }
     const user = this.users[index];
     this.users[index] = {
@@ -50,7 +53,7 @@ class UsersService {
   delete(id) {
     const index = this.users.findIndex((item) => item.id === id);
     if (index === -1) {
-      throw new Error('Product not found');
+      throw boom.notFound('User Not Found');
     }
     this.users.splice(index, 1);
     return { id };
