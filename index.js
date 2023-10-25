@@ -1,4 +1,6 @@
 const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
 const routerApi = require('./routes');
 
 const {
@@ -9,6 +11,8 @@ const {
 
 const app = express();
 const port = 3000;
+app.use(helmet());
+app.use(cors());
 
 // Middleware
 app.use(express.json());
